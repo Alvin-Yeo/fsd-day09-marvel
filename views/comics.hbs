@@ -1,0 +1,30 @@
+<main>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col">
+                <h2>Comics</h2>
+            </div>
+        </div>
+        <div class="row">
+            {{#each comics}}
+                <div class="col-md-4 mt-3">
+                    <div class="card text-center">
+                        <img class="card-img-top bd-placeholder-img" src="{{ this.thumbnail.path }}.{{ this.thumbnail.extension }}" alt="{{ this.title }}'s Cover Image" width="100%" height="450" style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ this.title }}</h5>
+                            {{!-- <p class="card-text"></p> --}}
+                            {{!-- <a href="#" class="btn btn-primary">Go</a> --}}
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <a href="/" class="btn btn-primary btn-lg">Main Page</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+
