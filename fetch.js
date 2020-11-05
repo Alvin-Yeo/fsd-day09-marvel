@@ -40,4 +40,22 @@ const getComics = async() => {
     }
 };
 
-module.exports = getComics;
+const getComicInfo = async(id) => {
+    const url = BASE_URL + '/comics/' + id;
+    const endpoint = getEndpoint(url);
+
+    // console.log('>>> Endpoint: ', endpoint)
+
+    try {
+        const result = await fetch(endpoint);
+        const data = await result.json();
+        
+        // console.log('>>> Data: ', data);
+
+        return data.data.results[0];
+    } catch(err) {
+        console.error(`Unable to fetch api: `, err);
+    }
+};
+
+module.exports = { getComics, getComicInfo };

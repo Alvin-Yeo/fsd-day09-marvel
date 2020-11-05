@@ -11,9 +11,9 @@
                     <div class="card text-center">
                         <img class="card-img-top bd-placeholder-img" src="{{ this.thumbnail.path }}.{{ this.thumbnail.extension }}" alt="{{ this.title }}'s Cover Image" width="100%" height="450" style="object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">{{ this.title }}</h5>
-                            {{!-- <p class="card-text"></p> --}}
-                            {{!-- <a href="#" class="btn btn-primary">Go</a> --}}
+                            <h5 class="card-title font-weight-bold">{{ this.title }}</h5>
+                            <p class="card-text text-truncate">{{ this.description }}</p>
+                            <a href="/comics/{{ this.id }}" class="btn btn-primary">More info</a>
                         </div>
                     </div>
                 </div>
@@ -21,10 +21,8 @@
         </div>
         <div class="row mt-5">
             <div class="col text-center">
-                <a href="/" class="btn btn-primary btn-lg">Main Page</a>
+                <a href="/" class="btn btn-secondary btn-lg">Main Page</a>
             </div>
         </div>
     </div>
 </main>
-
-

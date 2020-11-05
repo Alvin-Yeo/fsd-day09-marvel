@@ -1,7 +1,8 @@
 // load modules
 const express = require('express');
 const handlebars = require('express-handlebars');
-const getComics = require('./fetch');
+
+const { getComics, getComicInfo } = require('./fetch');
 
 // configure port
 const PORT = parseInt(process.argv[2]) || parseInt(process.env.PORT) || 3000;
@@ -31,6 +32,20 @@ app.get('/comics', async(req, res) => {
         res.status('500');
         res.type('text/html');
         res.send(`Unable to fetch comics from api: ${err}`);
+    }
+});
+
+app.get('/comics/:id', async(req, res) => {
+    try {
+        const comicInfo = await getComicInfo(req.params.id);
+        const detailPage = comicInfo.urls[0].url;
+        // console.log('>>> Comics: ', comicInfo);
+        // console.log('>>> Detail Page: ', detailPage);
+        res.redirect(301, detailPage);
+    } catch(err) {
+        res.status('500');
+        res.type('text/html');
+        res.send(`Unable to redirect to marvel page: ${err}`);
     }
 });
 
